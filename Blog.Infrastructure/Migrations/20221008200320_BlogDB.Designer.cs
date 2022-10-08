@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Infrastructure.Migrations
 {
     [DbContext(typeof(BlogDBContext))]
-    [Migration("20221008190956_BlogDB")]
+    [Migration("20221008200320_BlogDB")]
     partial class BlogDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,11 +37,13 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -80,6 +82,71 @@ namespace Blog.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Blog.Domain.AggregatesModel.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "Comment 1",
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3442),
+                            CreatorId = 1,
+                            PostId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Comment 2",
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3448),
+                            CreatorId = 1,
+                            PostId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "Comment 3",
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3450),
+                            CreatorId = 1,
+                            PostId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Content = "Comment 4",
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3452),
+                            CreatorId = 1,
+                            PostId = 2
+                        });
+                });
+
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -93,7 +160,8 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -110,28 +178,28 @@ namespace Blog.Infrastructure.Migrations
                             Id = 1,
                             BlogId = 1,
                             Content = "Post 1",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1244)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3392)
                         },
                         new
                         {
                             Id = 2,
                             BlogId = 1,
                             Content = "Post 2",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1283)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3428)
                         },
                         new
                         {
                             Id = 3,
                             BlogId = 2,
                             Content = "Post 3",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1285)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3430)
                         },
                         new
                         {
                             Id = 4,
                             BlogId = 1,
                             Content = "Post 4",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1286)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3431)
                         });
                 });
 
@@ -145,11 +213,13 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -167,12 +237,31 @@ namespace Blog.Infrastructure.Migrations
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Blog", b =>
                 {
                     b.HasOne("Blog.Domain.AggregatesModel.User", "Creator")
-                        .WithMany()
+                        .WithMany("Blogs")
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("Blog.Domain.AggregatesModel.Comment", b =>
+                {
+                    b.HasOne("Blog.Domain.AggregatesModel.User", "Creator")
+                        .WithMany("Comments")
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Blog.Domain.AggregatesModel.Post", "Posts")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>
@@ -189,6 +278,18 @@ namespace Blog.Infrastructure.Migrations
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Blog", b =>
                 {
                     b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Blog.Domain.AggregatesModel.User", b =>
+                {
+                    b.Navigation("Blogs");
+
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

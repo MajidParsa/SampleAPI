@@ -35,11 +35,13 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -88,7 +90,8 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -103,6 +106,8 @@ namespace Blog.Infrastructure.Migrations
 
                     b.HasIndex("CreatorId");
 
+                    b.HasIndex("PostId");
+
                     b.ToTable("Comments");
 
                     b.HasData(
@@ -110,7 +115,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Comment 1",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(581),
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3442),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -118,7 +123,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 2,
                             Content = "Comment 2",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(587),
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3448),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -126,7 +131,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 3,
                             Content = "Comment 3",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(590),
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3450),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -134,7 +139,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 4,
                             Content = "Comment 4",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(593),
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3452),
                             CreatorId = 1,
                             PostId = 2
                         });
@@ -151,12 +156,10 @@ namespace Blog.Infrastructure.Migrations
                     b.Property<int>("BlogId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CommentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -164,8 +167,6 @@ namespace Blog.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BlogId");
-
-                    b.HasIndex("CommentId");
 
                     b.ToTable("Posts");
 
@@ -175,28 +176,28 @@ namespace Blog.Infrastructure.Migrations
                             Id = 1,
                             BlogId = 1,
                             Content = "Post 1",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(476)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3392)
                         },
                         new
                         {
                             Id = 2,
                             BlogId = 1,
                             Content = "Post 2",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(541)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3428)
                         },
                         new
                         {
                             Id = 3,
                             BlogId = 2,
                             Content = "Post 3",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(545)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3430)
                         },
                         new
                         {
                             Id = 4,
                             BlogId = 1,
                             Content = "Post 4",
-                            CreateDate = new DateTime(2022, 10, 8, 21, 27, 18, 624, DateTimeKind.Local).AddTicks(548)
+                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3431)
                         });
                 });
 
@@ -210,11 +211,13 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -232,7 +235,7 @@ namespace Blog.Infrastructure.Migrations
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Blog", b =>
                 {
                     b.HasOne("Blog.Domain.AggregatesModel.User", "Creator")
-                        .WithMany()
+                        .WithMany("Blogs")
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -243,12 +246,20 @@ namespace Blog.Infrastructure.Migrations
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Comment", b =>
                 {
                     b.HasOne("Blog.Domain.AggregatesModel.User", "Creator")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Blog.Domain.AggregatesModel.Post", "Posts")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Creator");
+
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>
@@ -259,10 +270,6 @@ namespace Blog.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Blog.Domain.AggregatesModel.Comment", null)
-                        .WithMany("Posts")
-                        .HasForeignKey("CommentId");
-
                     b.Navigation("Blog");
                 });
 
@@ -271,9 +278,16 @@ namespace Blog.Infrastructure.Migrations
                     b.Navigation("Posts");
                 });
 
-            modelBuilder.Entity("Blog.Domain.AggregatesModel.Comment", b =>
+            modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>
                 {
-                    b.Navigation("Posts");
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Blog.Domain.AggregatesModel.User", b =>
+                {
+                    b.Navigation("Blogs");
+
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

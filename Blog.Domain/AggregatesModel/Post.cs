@@ -8,6 +8,7 @@ namespace Blog.Domain.AggregatesModel
         public DateTime CreateDate { get; private set; }
         public int BlogId { get; private set; }
         public Blog Blog { get; private set; }
+        public ICollection<Comment> Comments { get; private set; }
 
         private Post(int id, string content, int blogId, DateTime createDate)
         {

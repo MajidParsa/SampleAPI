@@ -15,8 +15,8 @@ namespace Blog.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,8 +29,8 @@ namespace Blog.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CreatorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -50,7 +50,7 @@ namespace Blog.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BlogId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -61,6 +61,34 @@ namespace Blog.Infrastructure.Migrations
                         name: "FK_Posts_Blogs_BlogId",
                         column: x => x.BlogId,
                         principalTable: "Blogs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PostId = table.Column<int>(type: "int", nullable: false),
+                    CreatorId = table.Column<int>(type: "int", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Users_CreatorId",
+                        column: x => x.CreatorId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -86,16 +114,37 @@ namespace Blog.Infrastructure.Migrations
                 columns: new[] { "Id", "BlogId", "Content", "CreateDate" },
                 values: new object[,]
                 {
-                    { 1, 1, "Post 1", new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1244) },
-                    { 2, 1, "Post 2", new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1283) },
-                    { 3, 2, "Post 3", new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1285) },
-                    { 4, 1, "Post 4", new DateTime(2022, 10, 8, 21, 9, 56, 155, DateTimeKind.Local).AddTicks(1286) }
+                    { 1, 1, "Post 1", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3392) },
+                    { 2, 1, "Post 2", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3428) },
+                    { 3, 2, "Post 3", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3430) },
+                    { 4, 1, "Post 4", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3431) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "CreateDate", "CreatorId", "PostId" },
+                values: new object[,]
+                {
+                    { 1, "Comment 1", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3442), 1, 1 },
+                    { 2, "Comment 2", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3448), 1, 1 },
+                    { 3, "Comment 3", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3450), 1, 1 },
+                    { 4, "Comment 4", new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3452), 1, 2 }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Blogs_CreatorId",
                 table: "Blogs",
                 column: "CreatorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_CreatorId",
+                table: "Comments",
+                column: "CreatorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_PostId",
+                table: "Comments",
+                column: "PostId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_BlogId",
@@ -105,6 +154,9 @@ namespace Blog.Infrastructure.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Comments");
+
             migrationBuilder.DropTable(
                 name: "Posts");
 

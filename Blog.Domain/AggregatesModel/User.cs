@@ -6,6 +6,8 @@ namespace Blog.Domain.AggregatesModel
     {
         public string Username { get; private set; }
         public string PasswordHash { get; private set; }
+        public ICollection<Blog> Blogs { get; private set; }
+        public ICollection<Comment> Comments { get; private set; }
 
         private User(int id, string username, string passwordHash)
         {
