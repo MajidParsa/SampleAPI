@@ -1,5 +1,6 @@
 ﻿using Blog.Application;
 using Blog.Application.Services;
+using Blog.Infrastructure.Repositories.Blog;
 
 namespace Blog.API.Configuration
 {
@@ -8,6 +9,7 @@ namespace Blog.API.Configuration
         public static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IBlogRepository, BlogRepository>();
         }
     }
 }

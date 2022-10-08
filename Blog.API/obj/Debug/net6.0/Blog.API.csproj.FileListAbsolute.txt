@@ -27,3 +27,5 @@ D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Blog.Do
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Blog.Infrastructure.dll
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Blog.Domain.pdb
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Blog.Infrastructure.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\AutoMapper.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

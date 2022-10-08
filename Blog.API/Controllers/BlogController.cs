@@ -18,8 +18,7 @@ namespace Blog.API.Controllers
         [HttpGet("GetBlogsAsync")]
         public async Task<ActionResult<BlogDto>> GetBlogsAsync(CancellationToken cancellationToken)
         {
-            throw new NullReferenceException();
-            var result = new BlogDto();//await _blogServiceProvider.GetShippingServices(cancellationToken);
+            var result = await _blogService.GetBlogs(cancellationToken);
 
             return Ok(result);
         }
