@@ -29,3 +29,8 @@ D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Blog.Do
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Blog.Infrastructure.pdb
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\AutoMapper.dll
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.API\obj\Debug\net6.0\Blog.API.MvcApplicationPartsAssemblyInfo.cs

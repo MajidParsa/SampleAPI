@@ -4,6 +4,198 @@
     "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Test\\Blog.Test.csproj": {}
   },
   "projects": {
+    "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj",
+        "projectName": "Blog.Application",
+        "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj",
+        "packagesPath": "C:\\Users\\MS\\.nuget\\packages\\",
+        "outputPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj": {
+                "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj",
+        "projectName": "Blog.Domain",
+        "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj",
+        "packagesPath": "C:\\Users\\MS\\.nuget\\packages\\",
+        "outputPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj",
+        "projectName": "Blog.Infrastructure",
+        "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\MS\\.nuget\\packages\\",
+        "outputPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj": {
+                "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Test\\Blog.Test.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,14 +218,22 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://azure-build01.cymax.local/guestAuth/app/nuget/v1/FeedService.svc/": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/cymaxstores/CymaxLogging/_packaging/CymaxNugetFeed/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj": {
+                "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj"
+              },
+              "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj": {
+                "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Domain\\Blog.Domain.csproj"
+              },
+              "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj": {
+                "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Infrastructure\\Blog.Infrastructure.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -45,6 +245,28 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.7.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.2, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
