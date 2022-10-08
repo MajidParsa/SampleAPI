@@ -11,7 +11,7 @@ builder.Services
     .InitializeAutoMapper()
     .AddCustomSwagger()
     .AddServices()
-    .AddInfrastructure();
+    .AddInfrastructure(builder.Configuration);
 
 
 var app = builder.Build();

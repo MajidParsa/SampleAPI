@@ -11,7 +11,7 @@ namespace Blog.Test.Domain
         [TestCase(" ")]
         public async Task CreateBlog_InvalidBlogName_ShouldBeThrowAnException(string name)
         {
-            Assert.Throws<ArgumentException>(() => Blog.Domain.AggregatesModel.Blog.Create(VALID_BLOG_ID, name, string.Empty));
+            Assert.Throws<ArgumentException>(() => Blog.Domain.AggregatesModel.Blog.Create(VALID_BLOG_ID, name, string.Empty, 1));
         }
     }
 }

@@ -13,8 +13,8 @@ namespace Blog.Infrastructure.Repositories.Blog
              ****************************************************************************************************************/
             _blogs = new List<Domain.AggregatesModel.Blog>
             {
-                Domain.AggregatesModel.Blog.Create(1, "Blog 1", "Description 1"),
-                Domain.AggregatesModel.Blog.Create(2, "Blog 2", "Description 2")
+                Domain.AggregatesModel.Blog.Create(1, "Blog 1", "Description 1", 1),
+                Domain.AggregatesModel.Blog.Create(2, "Blog 2", "Description 2", 1)
             };
         }
 

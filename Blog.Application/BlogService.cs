@@ -28,7 +28,7 @@ namespace Blog.Application
         public async Task<BlogDto> AddBlog(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
         {
             var blogId = await GetMaxBlogId(cancellationToken);
-            var blog = Domain.AggregatesModel.Blog.Create(blogId, blogInsertCommand.Name, blogInsertCommand.Description); // NOTE: Just for DDD demo
+            var blog = Domain.AggregatesModel.Blog.Create(blogId, blogInsertCommand.Name, blogInsertCommand.Description, 1); // NOTE: Just for DDD demo
 
             var insertedBlog = await _blogRepository.InsertBlog(blog, cancellationToken);
 

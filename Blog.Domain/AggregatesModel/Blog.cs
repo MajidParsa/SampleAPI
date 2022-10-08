@@ -10,7 +10,7 @@ namespace Blog.Domain.AggregatesModel
         public User Creator { get; private set; }
         public ICollection<Post> Posts { get; private set; }
 
-        private Blog(int id, string name, string description)
+        private Blog(int id, string name, string description, int creatorId)
         {
             if (id > 0)
                 Id = id;
@@ -20,11 +20,12 @@ namespace Blog.Domain.AggregatesModel
 
             Name = name;
             Description = description;
+            CreatorId = creatorId;
         }
 
-        public static Blog Create(int id, string name, string description)
+        public static Blog Create(int id, string name, string description, int creatorId)
         {
-            return new Blog(id, name, description);
+            return new Blog(id, name, description, creatorId);
         }
 
     }
