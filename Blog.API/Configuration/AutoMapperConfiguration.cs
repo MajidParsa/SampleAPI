@@ -5,7 +5,7 @@ namespace Blog.API.Configuration
 {
     public static class AutoMapperConfiguration
     {
-        public static void InitializeAutoMapper(this IServiceCollection services)
+        public static IServiceCollection InitializeAutoMapper(this IServiceCollection services)
         {
             var mapperConfig = new MapperConfiguration(mc =>
             {
@@ -13,6 +13,8 @@ namespace Blog.API.Configuration
             });
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            return services;
         }
     }
 }

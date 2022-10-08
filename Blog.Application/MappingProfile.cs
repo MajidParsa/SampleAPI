@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Blog.Application.DTOs;
-using Blog.Infrastructure.Repositories.Entities;
 
 namespace Blog.Application
 {
@@ -8,9 +7,9 @@ namespace Blog.Application
     {
         public MappingProfile()
         {
-            CreateMap<BlogDto, BlogEntity>().ReverseMap();
-            CreateMap<Domain.AggregatesModel.Blog, BlogEntity>().ReverseMap();
-            CreateMap<BlogUpdateCommand, BlogEntity>().ReverseMap();
+            CreateMap<BlogDto, Domain.AggregatesModel.Blog>().ReverseMap();
+            CreateMap<Domain.AggregatesModel.Blog, Domain.AggregatesModel.Blog>().ReverseMap();
+            CreateMap<BlogUpdateCommand, Domain.AggregatesModel.Blog>().ReverseMap();
         }
     }
 }

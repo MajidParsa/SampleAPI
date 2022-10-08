@@ -1,13 +1,18 @@
 using Blog.API.Configuration;
+using Blog.Application.Configuration;
+using Blog.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.InitializeAutoMapper();
-builder.Services.AddCustomSwagger();
-builder.Services.AddServices();
+builder.Services
+    .InitializeAutoMapper()
+    .AddCustomSwagger()
+    .AddServices()
+    .AddInfrastructure();
+
 
 var app = builder.Build();
 

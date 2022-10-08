@@ -1,6 +1,4 @@
-﻿using Blog.Domain.SeedWork;
-
-namespace Blog.Infrastructure.Repositories
+﻿namespace Blog.Domain.SeedWork
 {
     public abstract class BaseEntity<TKey> : IEntity
     {

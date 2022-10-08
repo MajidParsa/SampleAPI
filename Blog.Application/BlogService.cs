@@ -2,7 +2,6 @@
 using Blog.Application.DTOs;
 using Blog.Application.Services;
 using Blog.Infrastructure.Repositories.Blog;
-using Blog.Infrastructure.Repositories.Entities;
 
 namespace Blog.Application
 {
@@ -29,10 +28,9 @@ namespace Blog.Application
         public async Task<BlogDto> AddBlog(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
         {
             var blogId = await GetMaxBlogId(cancellationToken);
-            var blog = Domain.AggregatesModel.Blog.CreateBlog(blogId, blogInsertCommand.Name, blogInsertCommand.Description); // NOTE: Just for DDD demo
+            var blog = Domain.AggregatesModel.Blog.Create(blogId, blogInsertCommand.Name, blogInsertCommand.Description); // NOTE: Just for DDD demo
 
-            var blogEntity = _mapper.Map<BlogEntity> (blog);
-            var insertedBlog = await _blogRepository.InsertBlog(blogEntity, cancellationToken);
+            var insertedBlog = await _blogRepository.InsertBlog(blog, cancellationToken);
 
             var result = _mapper.Map<BlogDto>(insertedBlog);
             return result;
@@ -47,7 +45,7 @@ namespace Blog.Application
             var blogEntity = _mapper.Map(blogUpdateCommand, existsBlog); // TODO: Reference update
             var updatedBlog = await _blogRepository.UpdateBlog(blogEntity, cancellationToken);
 
-            var result = _mapper.Map<BlogEntity, BlogDto>(updatedBlog);
+            var result = _mapper.Map<Domain.AggregatesModel.Blog, BlogDto>(updatedBlog);
             return result;
         }
 
