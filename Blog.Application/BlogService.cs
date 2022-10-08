@@ -19,9 +19,9 @@ namespace Blog.Application
 
         public async Task<IEnumerable<BlogDto>> GetBlogs(CancellationToken cancellationToken)
         {
-            var blogEntities = await _blogRepository.GetBlogs(cancellationToken);
+            var blogEntities = await _blogRepository.SelectBlogs(cancellationToken);
             
-            var blogs = _mapper.Map<List<BlogEntity>, List<BlogDto>>(blogEntities.ToList());
+            var blogs = _mapper.Map<List<BlogDto>>(blogEntities.ToList());
             
             return blogs;
         }
@@ -29,12 +29,25 @@ namespace Blog.Application
         public async Task<BlogDto> AddBlog(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
         {
             var blogId = await GetMaxBlogId(cancellationToken);
-            var blog = Domain.AggregatesModel.Blog.CreateBlog(blogId, blogInsertCommand.Name, blogInsertCommand.Description);
+            var blog = Domain.AggregatesModel.Blog.CreateBlog(blogId, blogInsertCommand.Name, blogInsertCommand.Description); // NOTE: Just for DDD demo
 
-            var blogEntity = _mapper.Map<Domain.AggregatesModel.Blog, BlogEntity> (blog);
+            var blogEntity = _mapper.Map<BlogEntity> (blog);
             var insertedBlog = await _blogRepository.InsertBlog(blogEntity, cancellationToken);
 
-            var result = _mapper.Map<BlogEntity, BlogDto>(insertedBlog);
+            var result = _mapper.Map<BlogDto>(insertedBlog);
+            return result;
+        }
+
+        public async Task<BlogDto?> EditBlog(BlogUpdateCommand blogUpdateCommand, CancellationToken cancellationToken)
+        {
+            var existsBlog = await _blogRepository.SelectBlog(blogUpdateCommand.Id, cancellationToken);
+            if (existsBlog == null)
+                return null;
+
+            var blogEntity = _mapper.Map(blogUpdateCommand, existsBlog); // TODO: Reference update
+            var updatedBlog = await _blogRepository.UpdateBlog(blogEntity, cancellationToken);
+
+            var result = _mapper.Map<BlogEntity, BlogDto>(updatedBlog);
             return result;
         }
 
@@ -42,7 +55,7 @@ namespace Blog.Application
         {
             // TODO: We should use auto identity column or GUID
 
-            var blogs = await _blogRepository.GetBlogs(cancellationToken);
+            var blogs = await _blogRepository.SelectBlogs(cancellationToken);
             var lastBlog = blogs.MaxBy(i => i.Id);
 
             return lastBlog == null ? 1 : lastBlog.Id + 1;

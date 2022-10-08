@@ -6,5 +6,6 @@ namespace Blog.Application.Services
     {
         Task<IEnumerable<BlogDto>> GetBlogs(CancellationToken cancellationToken);
         Task<BlogDto> AddBlog(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken);
+        Task<BlogDto?> EditBlog(BlogUpdateCommand blogInsertCommand, CancellationToken cancellationToken);
     }
 }

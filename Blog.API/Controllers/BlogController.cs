@@ -15,7 +15,7 @@ namespace Blog.API.Controllers
             _blogService= blogService;
         }
 
-        [HttpGet("GetBlogsAsync")]
+        [HttpGet(nameof(GetBlogsAsync))]
         public async Task<ActionResult<BlogDto>> GetBlogsAsync(CancellationToken cancellationToken)
         {
             var result = await _blogService.GetBlogs(cancellationToken);
@@ -23,14 +23,23 @@ namespace Blog.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("AddBlogAsync")]
-        public async Task<ActionResult<BlogDto>> AddBlogsAsync(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
+        [HttpPost(nameof(AddBlogAsync))]
+        public async Task<ActionResult<BlogDto>> AddBlogAsync(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
         {
             var result = await _blogService.AddBlog(blogInsertCommand, cancellationToken);
 
             return Ok(result);
         }
 
+        [HttpPut(nameof(EditBlogAsync))]
+        public async Task<ActionResult<BlogDto>> EditBlogAsync(BlogUpdateCommand blogUpdateCommand, CancellationToken cancellationToken)
+        {
+            var result = await _blogService.EditBlog(blogUpdateCommand, cancellationToken);
+            if (result == null)
+                return BadRequest("Update failed. Record not found!");
+
+            return Ok(result);
+        }
 
     }
 }

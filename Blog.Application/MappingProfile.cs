@@ -10,6 +10,7 @@ namespace Blog.Application
         {
             CreateMap<BlogDto, BlogEntity>().ReverseMap();
             CreateMap<Domain.AggregatesModel.Blog, BlogEntity>().ReverseMap();
+            CreateMap<BlogUpdateCommand, BlogEntity>().ReverseMap();
         }
     }
 }
