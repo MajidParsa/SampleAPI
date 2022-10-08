@@ -22,5 +22,14 @@ namespace Blog.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("AddBlogAsync")]
+        public async Task<ActionResult<BlogDto>> AddBlogsAsync(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
+        {
+            var result = await _blogService.AddBlog(blogInsertCommand, cancellationToken);
+
+            return Ok(result);
+        }
+
     }
 }

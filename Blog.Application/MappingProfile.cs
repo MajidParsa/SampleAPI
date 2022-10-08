@@ -9,6 +9,7 @@ namespace Blog.Application
         public MappingProfile()
         {
             CreateMap<BlogDto, BlogEntity>().ReverseMap();
+            CreateMap<Domain.AggregatesModel.Blog, BlogEntity>().ReverseMap();
         }
     }
 }

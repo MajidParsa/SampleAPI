@@ -25,5 +25,27 @@ namespace Blog.Application
             
             return blogs;
         }
+
+        public async Task<BlogDto> AddBlog(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
+        {
+            var blogId = await GetMaxBlogId(cancellationToken);
+            var blog = Domain.AggregatesModel.Blog.CreateBlog(blogId, blogInsertCommand.Name, blogInsertCommand.Description);
+
+            var blogEntity = _mapper.Map<Domain.AggregatesModel.Blog, BlogEntity> (blog);
+            var insertedBlog = await _blogRepository.InsertBlog(blogEntity, cancellationToken);
+
+            var result = _mapper.Map<BlogEntity, BlogDto>(insertedBlog);
+            return result;
+        }
+
+        private async Task<int> GetMaxBlogId(CancellationToken cancellationToken)
+        {
+            // TODO: We should use auto identity column or GUID
+
+            var blogs = await _blogRepository.GetBlogs(cancellationToken);
+            var lastBlog = blogs.MaxBy(i => i.Id);
+
+            return lastBlog == null ? 1 : ++lastBlog.Id;
+        }
     }
 }
