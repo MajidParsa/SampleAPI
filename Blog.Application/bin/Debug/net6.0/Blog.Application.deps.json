@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Blog.Application/1.0.0": {
+        "dependencies": {
+          "Blog.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "Blog.Application.dll": {}
+        }
+      },
+      "Blog.Domain/1.0.0": {
+        "runtime": {
+          "Blog.Domain.dll": {}
+        }
+      },
+      "Blog.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Blog.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Blog.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Blog.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Blog.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Blog.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

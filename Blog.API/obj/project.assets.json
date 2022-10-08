@@ -1,0 +1,179 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Blog.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Blog.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Blog.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blog.Application.dll": {}
+        }
+      },
+      "Blog.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Blog.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blog.Domain.dll": {}
+        }
+      },
+      "Blog.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Blog.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Blog.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blog.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Blog.Application/1.0.0": {
+      "type": "project",
+      "path": "../Blog.Application/Blog.Application.csproj",
+      "msbuildProject": "../Blog.Application/Blog.Application.csproj"
+    },
+    "Blog.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Blog.Domain/Blog.Domain.csproj",
+      "msbuildProject": "../Blog.Domain/Blog.Domain.csproj"
+    },
+    "Blog.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Blog.Infrastructure/Blog.Infrastructure.csproj",
+      "msbuildProject": "../Blog.Infrastructure/Blog.Infrastructure.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Blog.Application >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\MS\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.API\\Blog.API.csproj",
+      "projectName": "Blog.API",
+      "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.API\\Blog.API.csproj",
+      "packagesPath": "C:\\Users\\MS\\.nuget\\packages\\",
+      "outputPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.API\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\MS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://azure-build01.cymax.local/guestAuth/app/nuget/v1/FeedService.svc/": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/cymaxstores/CymaxLogging/_packaging/CymaxNugetFeed/nuget/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj": {
+              "projectPath": "D:\\Majid\\Work\\Projects\\Job Interviews\\Matrix42\\Blog.Application\\Blog.Application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

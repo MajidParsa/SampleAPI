@@ -1,0 +1,12 @@
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\Blog.Test.deps.json
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\Blog.Test.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\Blog.Test.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.csproj.AssemblyReference.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.GeneratedMSBuildEditorConfig.editorconfig
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.AssemblyInfoInputs.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.AssemblyInfo.cs
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.csproj.CoreCompileInputs.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\refint\Blog.Test.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\Blog.Test.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\obj\Debug\net6.0\ref\Blog.Test.dll

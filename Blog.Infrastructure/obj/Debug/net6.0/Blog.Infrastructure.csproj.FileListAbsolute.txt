@@ -1,0 +1,15 @@
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Infrastructure.deps.json
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Infrastructure.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Infrastructure.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.csproj.AssemblyReference.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.AssemblyInfoInputs.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.AssemblyInfo.cs
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\refint\Blog.Infrastructure.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\ref\Blog.Infrastructure.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Domain.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Domain.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.csproj.CopyComplete

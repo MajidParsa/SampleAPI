@@ -1,0 +1,17 @@
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Application.deps.json
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Application.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Application.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.csproj.AssemblyReference.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.AssemblyInfoInputs.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.AssemblyInfo.cs
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.csproj.CoreCompileInputs.cache
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\refint\Blog.Application.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\ref\Blog.Application.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Domain.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Infrastructure.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Infrastructure.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\bin\Debug\net6.0\Blog.Domain.pdb
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Application\obj\Debug\net6.0\Blog.Application.csproj.CopyComplete
