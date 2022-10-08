@@ -1,4 +1,3 @@
-using System.Reflection;
 using Blog.API.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.InitializeAutoMapper();
+builder.Services.AddCustomSwagger();
 builder.Services.AddServices();
 
 var app = builder.Build();
@@ -15,6 +15,8 @@ var app = builder.Build();
 
 app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseCustomSwaggerUiExceptionHandler();
 app.UseAuthorization();
 app.MapControllers();
 

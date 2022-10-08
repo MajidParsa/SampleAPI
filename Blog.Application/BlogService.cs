@@ -45,7 +45,7 @@ namespace Blog.Application
             var blogs = await _blogRepository.GetBlogs(cancellationToken);
             var lastBlog = blogs.MaxBy(i => i.Id);
 
-            return lastBlog == null ? 1 : ++lastBlog.Id;
+            return lastBlog == null ? 1 : lastBlog.Id + 1;
         }
     }
 }
