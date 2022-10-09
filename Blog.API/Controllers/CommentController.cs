@@ -21,6 +21,8 @@ namespace Blog.API.Controllers
 
             var result = await Mediator.Send(command, cancellationToken);
 
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
+
             return Ok(result);
         }
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Infrastructure.Migrations
 {
     [DbContext(typeof(BlogDBContext))]
-    [Migration("20221009212302_BlogDB")]
+    [Migration("20221009221824_BlogDB")]
     partial class BlogDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5275),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9155),
                             CreatorId = 1,
                             Description = "Description 1",
                             Name = "Blog 1"
@@ -69,7 +69,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5314),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9200),
                             CreatorId = 1,
                             Description = "Description 2",
                             Name = "Blog 2"
@@ -77,7 +77,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5316),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9203),
                             CreatorId = 1,
                             Description = "Description 3",
                             Name = "Blog 3"
@@ -85,7 +85,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5318),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9204),
                             CreatorId = 1,
                             Description = "Description 4",
                             Name = "Blog 4"
@@ -114,11 +114,14 @@ namespace Blog.Infrastructure.Migrations
                     b.Property<int>("PostId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorId");
-
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
 
@@ -127,7 +130,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Comment 1",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5350),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9236),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -135,7 +138,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 2,
                             Content = "Comment 2",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5354),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9241),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -143,7 +146,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 3,
                             Content = "Comment 3",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5356),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9243),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -151,7 +154,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 4,
                             Content = "Comment 4",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5358),
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9244),
                             CreatorId = 1,
                             PostId = 2
                         });
@@ -191,28 +194,28 @@ namespace Blog.Infrastructure.Migrations
                             Id = 1,
                             BlogId = 1,
                             Content = "Post 1",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5331)
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9215)
                         },
                         new
                         {
                             Id = 2,
                             BlogId = 1,
                             Content = "Post 2",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5336)
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9221)
                         },
                         new
                         {
                             Id = 3,
                             BlogId = 2,
                             Content = "Post 3",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5338)
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9223)
                         },
                         new
                         {
                             Id = 4,
                             BlogId = 1,
                             Content = "Post 4",
-                            CreateDate = new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5340)
+                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9225)
                         });
                 });
 
@@ -260,32 +263,24 @@ namespace Blog.Infrastructure.Migrations
 
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Comment", b =>
                 {
-                    b.HasOne("Blog.Domain.AggregatesModel.User", "Creator")
-                        .WithMany("Comments")
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Blog.Domain.AggregatesModel.Post", "Post")
+                    b.HasOne("Blog.Domain.AggregatesModel.Post", null)
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Creator");
-
-                    b.Navigation("Post");
+                    b.HasOne("Blog.Domain.AggregatesModel.User", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>
                 {
-                    b.HasOne("Blog.Domain.AggregatesModel.Blog", "Blog")
+                    b.HasOne("Blog.Domain.AggregatesModel.Blog", null)
                         .WithMany("Posts")
                         .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Blog");
                 });
 
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Blog", b =>

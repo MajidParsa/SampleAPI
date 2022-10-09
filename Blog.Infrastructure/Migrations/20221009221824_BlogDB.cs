@@ -77,7 +77,8 @@ namespace Blog.Infrastructure.Migrations
                     PostId = table.Column<int>(type: "int", nullable: false),
                     CreatorId = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,11 +90,10 @@ namespace Blog.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comments_Users_CreatorId",
-                        column: x => x.CreatorId,
+                        name: "FK_Comments_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -106,10 +106,10 @@ namespace Blog.Infrastructure.Migrations
                 columns: new[] { "Id", "CreateDate", "CreatorId", "Description", "Name", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5275), 1, "Description 1", "Blog 1", null },
-                    { 2, new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5314), 1, "Description 2", "Blog 2", null },
-                    { 3, new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5316), 1, "Description 3", "Blog 3", null },
-                    { 4, new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5318), 1, "Description 4", "Blog 4", null }
+                    { 1, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9155), 1, "Description 1", "Blog 1", null },
+                    { 2, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9200), 1, "Description 2", "Blog 2", null },
+                    { 3, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9203), 1, "Description 3", "Blog 3", null },
+                    { 4, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9204), 1, "Description 4", "Blog 4", null }
                 });
 
             migrationBuilder.InsertData(
@@ -117,21 +117,21 @@ namespace Blog.Infrastructure.Migrations
                 columns: new[] { "Id", "BlogId", "Content", "CreateDate", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, 1, "Post 1", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5331), null },
-                    { 2, 1, "Post 2", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5336), null },
-                    { 3, 2, "Post 3", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5338), null },
-                    { 4, 1, "Post 4", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5340), null }
+                    { 1, 1, "Post 1", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9215), null },
+                    { 2, 1, "Post 2", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9221), null },
+                    { 3, 2, "Post 3", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9223), null },
+                    { 4, 1, "Post 4", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9225), null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "Content", "CreateDate", "CreatorId", "PostId" },
+                columns: new[] { "Id", "Content", "CreateDate", "CreatorId", "PostId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Comment 1", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5350), 1, 1 },
-                    { 2, "Comment 2", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5354), 1, 1 },
-                    { 3, "Comment 3", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5356), 1, 1 },
-                    { 4, "Comment 4", new DateTime(2022, 10, 9, 23, 23, 2, 724, DateTimeKind.Local).AddTicks(5358), 1, 2 }
+                    { 1, "Comment 1", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9236), 1, 1, null },
+                    { 2, "Comment 2", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9241), 1, 1, null },
+                    { 3, "Comment 3", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9243), 1, 1, null },
+                    { 4, "Comment 4", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9244), 1, 2, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -140,14 +140,14 @@ namespace Blog.Infrastructure.Migrations
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_CreatorId",
-                table: "Comments",
-                column: "CreatorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
                 table: "Comments",
                 column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_UserId",
+                table: "Comments",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_BlogId",

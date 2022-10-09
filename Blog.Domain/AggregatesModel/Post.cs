@@ -8,7 +8,7 @@ namespace Blog.Domain.AggregatesModel
         public DateTime CreateDate { get; private set; }
         public DateTime? UpdateDate { get; private set; }
         public int BlogId { get; private set; }
-        public Blog Blog { get; private set; }
+        //public Blog Blog { get; private set; }
 
         private readonly List<Comment> _comments;
         public IReadOnlyCollection<Comment> Comments => _comments;

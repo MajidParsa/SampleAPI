@@ -26,6 +26,8 @@ namespace Blog.API.Controllers
 
             var result = await Mediator.Send(query, cancellationToken);
 
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
+
             return Ok(result);
         }
 
@@ -36,6 +38,8 @@ namespace Blog.API.Controllers
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
 
             var result = await Mediator.Send(query, cancellationToken);
+
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
 
             return Ok(result);
         }
@@ -48,6 +52,8 @@ namespace Blog.API.Controllers
 
             var result = await Mediator.Send(query, cancellationToken);
 
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
+
             return Ok(result);
         }
 
@@ -59,6 +65,8 @@ namespace Blog.API.Controllers
             
             var result = await Mediator.Send(command, cancellationToken);
 
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
+
             return Ok(result);
         }
 
@@ -68,6 +76,8 @@ namespace Blog.API.Controllers
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
 
             var result = await Mediator.Send(command, cancellationToken);
+
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
 
             return Ok(result);
         }
