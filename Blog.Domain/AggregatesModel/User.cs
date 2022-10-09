@@ -24,5 +24,10 @@ namespace Blog.Domain.AggregatesModel
         {
             return new User(id, username, passwordHash);
         }
+
+        public static User CurrentUser() // TODO: We need to JWT (Json Web Token) to get a user info and then we have to move this method to Application layer
+        {
+            return Create(1, "Majid", "jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=");
+        }
     }
 }

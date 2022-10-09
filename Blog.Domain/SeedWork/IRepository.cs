@@ -7,5 +7,7 @@
         IQueryable<TEntity> TableNoTracking { get; }
 
         Task AddAsync(TEntity entity, CancellationToken cancellationToken, bool saveNow = true);
+        Task<TEntity> GetByIdAsync(CancellationToken cancellationToken, params object[] ids);
+        Task UpdateAsync(TEntity entity, CancellationToken cancellationToken, bool saveNow = true);
     }
 }

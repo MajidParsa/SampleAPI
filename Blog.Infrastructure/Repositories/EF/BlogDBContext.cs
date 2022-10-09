@@ -37,6 +37,7 @@ namespace Blog.Infrastructure.Repositories.EF
                 Domain.AggregatesModel.Blog.Create(3,"Blog 3", "Description 3", 1),
                 Domain.AggregatesModel.Blog.Create(4,"Blog 4", "Description 4", 1));
 
+
             modelBuilder.Entity<Post>().HasData(
                 Post.Create(1,"Post 1", 1),
                 Post.Create(2,"Post 2", 1),
@@ -44,10 +45,10 @@ namespace Blog.Infrastructure.Repositories.EF
                 Post.Create(4,"Post 4", 1));
 
             modelBuilder.Entity<Comment>().HasData(
-                Comment.Put(1, 1, 1, "Comment 1"),
-                Comment.Put(2, 1, 1, "Comment 2"),
-                Comment.Put(3, 1, 1, "Comment 3"),
-                Comment.Put(4, 2, 1, "Comment 4"));
+                Comment.Create(1, 1, 1, "Comment 1"),
+                Comment.Create(2, 1, 1, "Comment 2"),
+                Comment.Create(3, 1, 1, "Comment 3"),
+                Comment.Create(4, 2, 1, "Comment 4"));
         }
     }
 }

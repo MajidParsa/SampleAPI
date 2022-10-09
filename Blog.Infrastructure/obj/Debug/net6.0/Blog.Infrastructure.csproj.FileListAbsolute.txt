@@ -13,3 +13,5 @@ D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Domain.dll
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Domain.pdb
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.csproj.CopyComplete
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\bin\Debug\net6.0\Blog.Infrastructure.runtimeconfig.json
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Infrastructure\obj\Debug\net6.0\Blog.Infrastructure.genruntimeconfig.cache

@@ -29,5 +29,11 @@ namespace Blog.Domain.AggregatesModel
         {
             return Create(0, content, blogId);
         }
+
+        public static Post PutComment(Post postInstance, Comment comment)
+        {
+            postInstance.Comments.Add(comment);
+            return postInstance;
+        }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Blog.Application.DTOs;
 using Blog.Domain.AggregatesModel;
 using Blog.Infrastructure.Repositories.Blog;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Application.Commands.BlogCommands
 {
@@ -22,7 +20,7 @@ namespace Blog.Application.Commands.BlogCommands
         public async Task<BlogDto> Handle(AddBlogCommand request, CancellationToken cancellationToken)
         {
             int userId = 1;
-            var blogInstance = Domain.AggregatesModel.Blog.Create( request.Name, request.Description, userId);
+            var blogInstance = Domain.AggregatesModel.Blog.Create(request.Name, request.Description, userId);
 
             var postInstance = Post.Create(request.Content, blogInstance.Id);
             blogInstance = Domain.AggregatesModel.Blog.PublishPost(blogInstance, postInstance);

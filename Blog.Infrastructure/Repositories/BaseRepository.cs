@@ -19,13 +19,29 @@ namespace Blog.Infrastructure.Repositories
             Entities = DbContext.Set<TEntity>();
         }
 
-        public async Task AddAsync(TEntity entity, CancellationToken cancellationToken, bool saveNow = true)
+        public virtual async Task AddAsync(TEntity entity, CancellationToken cancellationToken, bool saveNow = true)
         {
             Assert.NotNull(entity, nameof(entity));
             await Entities.AddAsync(entity, cancellationToken).ConfigureAwait(false);
             if (saveNow)
                 await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
         }
+
+        public virtual async Task<TEntity?> GetByIdAsync(CancellationToken cancellationToken, params object[] ids)
+        {
+            var tEntity = await Entities.FindAsync(ids, cancellationToken);
+            return tEntity;
+        }
+
+        public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken, bool saveNow = true)
+        {
+            Assert.NotNull(entity, nameof(entity));
+            Entities.Update(entity);
+            if (saveNow)
+                await DbContext.SaveChangesAsync(cancellationToken);
+        }
+
+
 
     }
 }

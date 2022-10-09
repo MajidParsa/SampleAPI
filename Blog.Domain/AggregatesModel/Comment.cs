@@ -8,7 +8,7 @@ namespace Blog.Domain.AggregatesModel
         public int CreatorId { get; private set; }
         public string Content { get; private set; }
         public DateTime CreateDate { get; private set; }
-        public Post Posts { get; private set; }
+        public Post Post { get; private set; }
         public User Creator { get; private set; }
 
         private Comment(int id, int postId, int creatorId, string content, DateTime createDate)
@@ -26,9 +26,14 @@ namespace Blog.Domain.AggregatesModel
             CreateDate = createDate;
         }
 
-        public static Comment Put(int id, int postId, int creatorId, string content)
+        public static Comment Create(int id, int postId, int creatorId, string content)
         {
             return new Comment(id, postId, creatorId, content, DateTime.Now);
+        }
+
+        public static Comment Create(int postId, int creatorId, string content)
+        {
+            return Create(0, postId, creatorId, content);
         }
     }
 }

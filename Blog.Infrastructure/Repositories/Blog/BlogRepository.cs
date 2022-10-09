@@ -39,5 +39,18 @@ namespace Blog.Infrastructure.Repositories.Blog
             //_blogs.Add(blog);
             //return await Task.Run(() => blog, cancellationToken);
         }
+
+        public async Task PutCommentAsync(Domain.AggregatesModel.Blog blog, Post post, CancellationToken cancellationToken, bool saveNow = true)
+        {
+            await base.UpdateAsync(blog, cancellationToken);
+            if (saveNow)
+                await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
+            //Event eventInstance = expense.Event;
+            //expense.ExpensePartTakers.Add(expenseParticipant);
+            //await base.UpdateAsync(eventInstance, cancellationToken);
+            //if (saveNow)
+            //    await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+        }
     }
 }
