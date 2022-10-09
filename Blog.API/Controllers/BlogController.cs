@@ -1,5 +1,6 @@
 ﻿using Blog.Application.Commands.BlogCommands;
 using Blog.Application.DTOs;
+using Blog.Application.Queries.BlogQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -18,11 +19,14 @@ namespace Blog.API.Controllers
         }
 
         [HttpGet(nameof(GetBlogsAsync))]
-        public async Task<ActionResult<BlogDto>> GetBlogsAsync(CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogsDto>> GetBlogsAsync(int? id,CancellationToken cancellationToken)
         {
-            //var result = await _blogService.GetBlogs(cancellationToken);
+            var query = new GetBlogQuery {Id = id};
+            _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
 
-            return Ok(null);
+            var result = await Mediator.Send(query, cancellationToken);
+
+            return Ok(result);
         }
 
         [HttpPost(nameof(AddBlogAsync))]
@@ -31,8 +35,6 @@ namespace Blog.API.Controllers
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
             
             var result = await Mediator.Send(command, cancellationToken);
-
-            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
 
             return Ok(result);
         }

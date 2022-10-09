@@ -115,7 +115,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Comment 1",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3442),
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4568),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -123,7 +123,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 2,
                             Content = "Comment 2",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3448),
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4572),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -131,7 +131,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 3,
                             Content = "Comment 3",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3450),
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4574),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -139,7 +139,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 4,
                             Content = "Comment 4",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3452),
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4575),
                             CreatorId = 1,
                             PostId = 2
                         });
@@ -176,28 +176,28 @@ namespace Blog.Infrastructure.Migrations
                             Id = 1,
                             BlogId = 1,
                             Content = "Post 1",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3392)
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4470)
                         },
                         new
                         {
                             Id = 2,
                             BlogId = 1,
                             Content = "Post 2",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3428)
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4511)
                         },
                         new
                         {
                             Id = 3,
                             BlogId = 2,
                             Content = "Post 3",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3430)
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4513)
                         },
                         new
                         {
                             Id = 4,
                             BlogId = 1,
                             Content = "Post 4",
-                            CreateDate = new DateTime(2022, 10, 8, 22, 3, 20, 76, DateTimeKind.Local).AddTicks(3431)
+                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4515)
                         });
                 });
 
@@ -251,7 +251,7 @@ namespace Blog.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Blog.Domain.AggregatesModel.Post", "Posts")
+                    b.HasOne("Blog.Domain.AggregatesModel.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -259,7 +259,7 @@ namespace Blog.Infrastructure.Migrations
 
                     b.Navigation("Creator");
 
-                    b.Navigation("Posts");
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("Blog.Domain.AggregatesModel.Post", b =>

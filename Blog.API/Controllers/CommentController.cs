@@ -15,13 +15,11 @@ namespace Blog.API.Controllers
         }
 
         [HttpPost(nameof(AddCommentAsync))]
-        public async Task<ActionResult<CommentDto>> AddCommentAsync(AddCommentCommand command, CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogsDto>> AddCommentAsync(AddCommentCommand command, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
 
             var result = await Mediator.Send(command, cancellationToken);
-
-            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
 
             return Ok(result);
         }

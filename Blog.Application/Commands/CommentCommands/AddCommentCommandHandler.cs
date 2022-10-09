@@ -3,10 +3,11 @@ using Blog.Application.DTOs;
 using Blog.Domain.AggregatesModel;
 using Blog.Infrastructure.Repositories.Blog;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Application.Commands.CommentCommands
 {
-    public class AddCommentCommandHandler : IRequestHandler<AddCommentCommand, CommentDto>
+    public class AddCommentCommandHandler : IRequestHandler<AddCommentCommand, BlogsDto>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
@@ -18,11 +19,15 @@ namespace Blog.Application.Commands.CommentCommands
         }
 
 
-        public async Task<CommentDto> Handle(AddCommentCommand request, CancellationToken cancellationToken)
+        public async Task<BlogsDto> Handle(AddCommentCommand request, CancellationToken cancellationToken)
         {
             User user = User.CurrentUser();
 
-            var blog = await _blogRepository.GetByIdAsync(cancellationToken, request.BlogId);
+            var blog = await _blogRepository.Table
+                .Include(p => p.Posts)
+                .ThenInclude(c=>c.Comments)
+                .FirstOrDefaultAsync(b => b.Id == request.BlogId, cancellationToken);
+
             ValidateBlog(blog);
 
             var post = blog.Posts.First(p => p.Id == request.PostId);
@@ -30,10 +35,9 @@ namespace Blog.Application.Commands.CommentCommands
             var commentInstance = Comment.Create(post.Id, user.Id, request.Content);
             post = Post.PutComment(post, commentInstance);
 
-
             await _blogRepository.PutCommentAsync(blog, post, cancellationToken);
 
-            var commentDto = _mapper.Map<CommentDto>(blog);
+            var commentDto = _mapper.Map<BlogsDto>(blog);
 
             return commentDto;
         }

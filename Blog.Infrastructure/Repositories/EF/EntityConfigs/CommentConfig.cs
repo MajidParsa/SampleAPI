@@ -12,7 +12,7 @@ namespace Blog.Infrastructure.Repositories.EF.EntityConfigs
             builder.Property(c => c.Content).IsRequired().HasMaxLength(4000);
             builder.Property(c => c.CreatorId).IsRequired();
             builder.Property(c => c.PostId).IsRequired();
-            builder.HasOne(p => p.Creator).WithMany(c => c.Comments).HasForeignKey(p => p.CreatorId);
+            builder.HasOne(p => p.Post).WithMany(c => c.Comments).HasForeignKey(p => p.PostId);
         }
     }
 }

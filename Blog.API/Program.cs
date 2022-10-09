@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Blog.API.Configuration;
 using Blog.Application.Configuration;
 using Blog.Infrastructure;
@@ -6,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services
     .InitializeAutoMapper()
     .AddCustomSwagger()
