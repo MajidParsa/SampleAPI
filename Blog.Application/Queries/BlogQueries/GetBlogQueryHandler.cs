@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Application.DTOs;
+using Blog.Domain.AggregatesModel;
 using Blog.Infrastructure.Repositories.Blog;
 using MediatR;
 
@@ -17,8 +18,10 @@ namespace Blog.Application.Queries.BlogQueries
         }
         public async Task<IEnumerable<BlogsDto>> Handle(GetBlogQuery request, CancellationToken cancellationToken)
         {
+            var userId = User.CurrentUser().Id;
+
             if (request.Id < 1) request.Id = null;
-            var result = await _blogRepository.SelectBlogsAsync(request.Id, cancellationToken);
+            var result = await _blogRepository.SelectBlogsAsync(request.Id, userId, cancellationToken);
             var blogsDto = _mapper.Map<List<BlogsDto>>(result);
 
             return blogsDto;

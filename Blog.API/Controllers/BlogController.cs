@@ -40,18 +40,13 @@ namespace Blog.API.Controllers
         }
 
         [HttpPut(nameof(EditBlogAsync))]
-        public async Task<ActionResult<BlogDto>> EditBlogAsync(BlogUpdateCommand blogUpdateCommand, CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogDto>> EditBlogAsync(EditBlogCommand command, CancellationToken cancellationToken)
         {
-            //_logger.LogInformation($"Request => {JsonConvert.SerializeObject(blogUpdateCommand)}");
+            _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
 
-            //var result = await _blogService.EditBlog(blogUpdateCommand, cancellationToken);
-            
-            //_logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
+            var result = await Mediator.Send(command, cancellationToken);
 
-            //if (result == null)
-            //    return BadRequest("Update failed. Record not found!");
-
-            return Ok(null);
+            return Ok(result);
         }
 
     }

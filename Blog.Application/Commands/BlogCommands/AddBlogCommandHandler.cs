@@ -24,7 +24,7 @@ namespace Blog.Application.Commands.BlogCommands
             var blogInstance = Domain.AggregatesModel.Blog.Create(request.Name, request.Description, userId);
 
             var postInstance = Post.Create(request.Content, blogInstance.Id);
-            blogInstance = Domain.AggregatesModel.Blog.PublishPost(blogInstance, postInstance);
+            Domain.AggregatesModel.Blog.PublishPost(blogInstance, postInstance);
 
             await _blogRepository.AddAsync(blogInstance, cancellationToken);
 

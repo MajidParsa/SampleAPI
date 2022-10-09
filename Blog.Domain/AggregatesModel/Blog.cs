@@ -31,10 +31,16 @@ namespace Blog.Domain.AggregatesModel
             return Create(0, name, description, creatorId);
         }
 
-        public static Blog PublishPost(Blog blogInstance, Post post)
+
+        public static void Edit(Blog blogInstance, string name, string description)
+        {
+            blogInstance.Name = name;
+            blogInstance.Description = description;
+        }
+
+        public static void PublishPost(Blog blogInstance, Post post)
         {
             blogInstance.Posts.Add(post);
-            return blogInstance;
         }
     }
 }

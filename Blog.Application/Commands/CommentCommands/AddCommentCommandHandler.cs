@@ -33,7 +33,7 @@ namespace Blog.Application.Commands.CommentCommands
             var post = blog.Posts.First(p => p.Id == request.PostId);
 
             var commentInstance = Comment.Create(post.Id, user.Id, request.Content);
-            post = Post.PutComment(post, commentInstance);
+            Post.PutComment(post, commentInstance);
 
             await _blogRepository.PutCommentAsync(blog, post, cancellationToken);
 
