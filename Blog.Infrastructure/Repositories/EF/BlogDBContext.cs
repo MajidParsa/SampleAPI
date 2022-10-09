@@ -39,10 +39,10 @@ namespace Blog.Infrastructure.Repositories.EF
 
 
             modelBuilder.Entity<Post>().HasData(
-                Post.Create(1,"Post 1", 1),
-                Post.Create(2,"Post 2", 1),
-                Post.Create(3,"Post 3", 2),
-                Post.Create(4,"Post 4", 1));
+                Post.Add(1,"Post 1", 1),
+                Post.Add(2,"Post 2", 1),
+                Post.Add(3,"Post 3", 2),
+                Post.Add(4,"Post 4", 1));
 
             modelBuilder.Entity<Comment>().HasData(
                 Comment.Create(1, 1, 1, "Comment 1"),

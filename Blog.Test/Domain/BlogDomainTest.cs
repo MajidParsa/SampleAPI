@@ -42,7 +42,7 @@ namespace Blog.Test.Domain
             // Arrange
             var content = "test";
             Blog.Domain.AggregatesModel.Blog blog = GetFakeBlog();
-            Post post = Post.Create(content, blog.Id);
+            Post post = Post.Add(content, blog.Id);
 
             // Act
             blog.AddPost(post);

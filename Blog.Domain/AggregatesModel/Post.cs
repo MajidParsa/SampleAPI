@@ -9,7 +9,9 @@ namespace Blog.Domain.AggregatesModel
         public DateTime? UpdateDate { get; private set; }
         public int BlogId { get; private set; }
         public Blog Blog { get; private set; }
-        public ICollection<Comment> Comments { get; private set; }
+
+        private readonly List<Comment> _comments;
+        public IReadOnlyCollection<Comment> Comments => _comments;
 
         private Post(int id, string content, int blogId, DateTime createDate)
         {
@@ -20,15 +22,21 @@ namespace Blog.Domain.AggregatesModel
             Content = content;
             BlogId = blogId;
             CreateDate = createDate;
+            _comments = new List<Comment>();
         }
 
-        public static Post Create(int id, string content, int blogId)
+        public Post()
+        {
+            _comments = new List<Comment>();
+        }
+
+        public static Post Add(int id, string content, int blogId)
         {
             return new Post(id, content, blogId, DateTime.Now);
         }
-        public static Post Create(string content, int blogId)
+        public static Post Add(string content, int blogId)
         {
-            return Create(0, content, blogId);
+            return Add(0, content, blogId);
         }
 
         public static void Edit(Post postInstance, string content)
@@ -37,9 +45,9 @@ namespace Blog.Domain.AggregatesModel
             postInstance.UpdateDate = DateTime.Now;
         }
 
-        public static void PutComment(Post postInstance, Comment comment)
+        public void AddComment(Comment comment)
         {
-            postInstance.Comments.Add(comment);
+            _comments.Add(comment);
         }
     }
 }
