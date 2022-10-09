@@ -106,32 +106,36 @@ namespace Blog.Infrastructure.Migrations
                 columns: new[] { "Id", "CreateDate", "CreatorId", "Description", "Name", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9155), 1, "Description 1", "Blog 1", null },
-                    { 2, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9200), 1, "Description 2", "Blog 2", null },
-                    { 3, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9203), 1, "Description 3", "Blog 3", null },
-                    { 4, new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9204), 1, "Description 4", "Blog 4", null }
+                    { 1, new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6275), 1, "Description 1", "Blog 1", null },
+                    { 2, new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6344), 1, "Description 2", "Blog 2", null },
+                    { 3, new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6348), 1, "Description 3", "Blog 3", null },
+                    { 4, new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6351), 1, "Description 4", "Blog 4", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "BlogId", "Content", "CreateDate", "UpdateDate" },
-                values: new object[,]
-                {
-                    { 1, 1, "Post 1", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9215), null },
-                    { 2, 1, "Post 2", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9221), null },
-                    { 3, 2, "Post 3", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9223), null },
-                    { 4, 1, "Post 4", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9225), null }
-                });
+                values: new object[] { 1, 1, "Post 1", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6376), null });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "Id", "BlogId", "Content", "CreateDate", "UpdateDate" },
+                values: new object[] { 2, 1, "Post 2", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6388), null });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "Id", "BlogId", "Content", "CreateDate", "UpdateDate" },
+                values: new object[] { 3, 2, "Post 3", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6392), null });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "Id", "Content", "CreateDate", "CreatorId", "PostId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Comment 1", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9236), 1, 1, null },
-                    { 2, "Comment 2", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9241), 1, 1, null },
-                    { 3, "Comment 3", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9243), 1, 1, null },
-                    { 4, "Comment 4", new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9244), 1, 2, null }
+                    { 1, "Comment 1", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6421), 1, 1, null },
+                    { 2, "Comment 2", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6431), 1, 1, null },
+                    { 3, "Comment 3", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6435), 1, 1, null },
+                    { 4, "Comment 4", new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6438), 1, 2, null }
                 });
 
             migrationBuilder.CreateIndex(

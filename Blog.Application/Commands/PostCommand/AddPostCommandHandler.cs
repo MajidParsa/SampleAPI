@@ -24,7 +24,7 @@ namespace Blog.Application.Commands.PostCommand
             BlogValidation(blogInstance);
 
             var postInstance = Post.Add(request.Content, blogInstance.Id);
-            blogInstance.AddPost(postInstance);
+            blogInstance?.AddPost(postInstance);
 
             await _blogRepository.UpdateAsync(blogInstance, cancellationToken);
 

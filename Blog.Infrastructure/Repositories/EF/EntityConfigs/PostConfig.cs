@@ -10,7 +10,7 @@ namespace Blog.Infrastructure.Repositories.EF.EntityConfigs
         {
             builder.Property(c => c.Id).IsRequired();
             builder.Property(c => c.Content).IsRequired().HasMaxLength(4000);
-            builder.Property(c => c.BlogId).IsRequired();
+            //builder.Property(c => c.BlogId).IsRequired();
         }
     }
 }

@@ -31,18 +31,18 @@ namespace Blog.Infrastructure.Repositories.EF
             modelBuilder.Entity<User>().HasData(
                 User.Create(1, "Majid", passwordHash));
 
-            modelBuilder.Entity<Domain.AggregatesModel.Blog>().HasData(
-                Domain.AggregatesModel.Blog.Add(1,"Blog 1", "Description 1", 1),
-                Domain.AggregatesModel.Blog.Add(2,"Blog 2", "Description 2", 1),
-                Domain.AggregatesModel.Blog.Add(3,"Blog 3", "Description 3", 1),
-                Domain.AggregatesModel.Blog.Add(4,"Blog 4", "Description 4", 1));
 
+
+            modelBuilder.Entity<Domain.AggregatesModel.Blog>().HasData(
+                Domain.AggregatesModel.Blog.Add(1, "Blog 1", "Description 1", 1),
+                Domain.AggregatesModel.Blog.Add(2, "Blog 2", "Description 2", 1),
+                Domain.AggregatesModel.Blog.Add(3, "Blog 3", "Description 3", 1),
+                Domain.AggregatesModel.Blog.Add(4, "Blog 4", "Description 4", 1));
 
             modelBuilder.Entity<Post>().HasData(
-                Post.Add(1,"Post 1", 1),
-                Post.Add(2,"Post 2", 1),
-                Post.Add(3,"Post 3", 2),
-                Post.Add(4,"Post 4", 1));
+                Post.Add(1, "Post 1", 1),
+                Post.Add(2, "Post 2", 1),
+                Post.Add(3, "Post 3", 2));
 
             modelBuilder.Entity<Comment>().HasData(
                 Comment.Create(1, 1, 1, "Comment 1"),

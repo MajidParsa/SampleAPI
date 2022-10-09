@@ -59,7 +59,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9155),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6275),
                             CreatorId = 1,
                             Description = "Description 1",
                             Name = "Blog 1"
@@ -67,7 +67,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9200),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6344),
                             CreatorId = 1,
                             Description = "Description 2",
                             Name = "Blog 2"
@@ -75,7 +75,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9203),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6348),
                             CreatorId = 1,
                             Description = "Description 3",
                             Name = "Blog 3"
@@ -83,7 +83,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9204),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6351),
                             CreatorId = 1,
                             Description = "Description 4",
                             Name = "Blog 4"
@@ -128,7 +128,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Comment 1",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9236),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6421),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -136,7 +136,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 2,
                             Content = "Comment 2",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9241),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6431),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -144,7 +144,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 3,
                             Content = "Comment 3",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9243),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6435),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -152,7 +152,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 4,
                             Content = "Comment 4",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9244),
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6438),
                             CreatorId = 1,
                             PostId = 2
                         });
@@ -192,28 +192,21 @@ namespace Blog.Infrastructure.Migrations
                             Id = 1,
                             BlogId = 1,
                             Content = "Post 1",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9215)
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6376)
                         },
                         new
                         {
                             Id = 2,
                             BlogId = 1,
                             Content = "Post 2",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9221)
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6388)
                         },
                         new
                         {
                             Id = 3,
                             BlogId = 2,
                             Content = "Post 3",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9223)
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BlogId = 1,
-                            Content = "Post 4",
-                            CreateDate = new DateTime(2022, 10, 10, 0, 18, 24, 530, DateTimeKind.Local).AddTicks(9225)
+                            CreateDate = new DateTime(2022, 10, 10, 1, 3, 10, 112, DateTimeKind.Local).AddTicks(6392)
                         });
                 });
 
