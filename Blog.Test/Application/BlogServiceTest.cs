@@ -1,13 +1,16 @@
-﻿using Blog.Application;
+﻿using AutoMapper;
+using Blog.Application;
 using Blog.Infrastructure.Repositories.Blog;
 using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Internal.Execution;
 
 namespace Blog.Test.Application
 {
     public class BlogServiceTest
     {
-        //private IBlogService _blogService;
+        private readonly Mock<IMapper> _autoMapper;
+        private readonly Mock<IBlogRepository> _blogRepository;
 
         //[SetUp]
         //public void Setup()
@@ -16,6 +19,24 @@ namespace Blog.Test.Application
         //    var mockBlogService = new Mock<BlogService>(mockBlogRepository.Object);
 
         //    _blogService = mockBlogService.Object;
+        //}
+
+        public BlogServiceTest()
+        {
+            _blogRepository = new Mock<IBlogRepository>();
+            _autoMapper = new Mock<IMapper>();
+        }
+
+        //[Test]
+        //public async Task AddPost_ShouldThrowException_WhenBlogNotFound()
+        //{
+        //    var addCommand = new AddExpenseCommand() { CategoryId = sampleCategoryId, EventId = sampleEventId, Name = sampleExpenseName, PayerId = sampleUserId, TotalPrice = samplePrice };
+        //    _identityService.Setup(x => x.GetUserId()).Returns(() => sampleUserId);
+        //    _eventRepository.Setup(x => x.GetByIdAsync(It.IsAny<CancellationToken>(), It.IsAny<int>())).Returns(() => Task.FromResult<Event>(null));
+        //    var handler = new AddExpenseCommandHandler(_eventRepository.Object, _identityService.Object, _autoMapper.Object);
+
+        //    var exception = await Assert.ThrowsAsync<ExpenseManagerApplicationServiceException>(async () => await handler.Handle(addCommand, new CancellationToken()));
+        //    Assert.Equal("Event not found.", exception.Message);
         //}
     }
 }

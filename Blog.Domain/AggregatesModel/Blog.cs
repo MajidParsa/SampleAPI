@@ -42,11 +42,11 @@ namespace Blog.Domain.AggregatesModel
         }
 
 
-        public static void Edit(Blog blogInstance, string name, string description)
+        public void Edit(string name, string description)
         {
-            blogInstance.Name = name;
-            blogInstance.UpdateDate = DateTime.Now;
-            blogInstance.Description = description;
+            Name = name;
+            UpdateDate = DateTime.Now;
+            Description = description;
         }
 
         public void AddPost(Post post)

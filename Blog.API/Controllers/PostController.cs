@@ -1,21 +1,22 @@
-﻿using Blog.Application.Commands.CommentCommands;
+﻿using Blog.Application.Commands.PostCommand;
 using Blog.Application.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Blog.API.Controllers
 {
-    public class CommentController : BaseApiController
+    public class PostController : BaseApiController
     {
-        private readonly ILogger<CommentController> _logger;
+        private readonly ILogger<PostController> _logger;
 
-        public CommentController(ILogger<CommentController> logger)
+        public PostController(ILogger<PostController> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [HttpPost(nameof(AddCommentAsync))]
-        public async Task<ActionResult<BlogPostDto>> AddCommentAsync(AddCommentCommand command, CancellationToken cancellationToken)
+
+        [HttpPost(nameof(AddPostAsync))]
+        public async Task<ActionResult<BlogPostDto>> AddPostAsync(AddPostCommand command, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
 
@@ -23,6 +24,5 @@ namespace Blog.API.Controllers
 
             return Ok(result);
         }
-
     }
 }

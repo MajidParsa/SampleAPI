@@ -4,37 +4,32 @@ using Blog.Domain.AggregatesModel;
 using Blog.Infrastructure.Repositories.Blog;
 using MediatR;
 
-namespace Blog.Application.Commands.BlogCommands
+namespace Blog.Application.Commands.PostCommand
 {
-    public class EditBlogCommandHandler : IRequestHandler<EditBlogCommand, BlogPostDto>
+    public class AddPostCommandHandler : IRequestHandler<AddPostCommand, BlogPostDto>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
 
-        public EditBlogCommandHandler(IBlogRepository blogRepository, IMapper mapper)
+        public AddPostCommandHandler(IMapper mapper, IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository ?? throw new ArgumentNullException(nameof(blogRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<BlogPostDto> Handle(EditBlogCommand request, CancellationToken cancellationToken)
+        public async Task<BlogPostDto> Handle(AddPostCommand request, CancellationToken cancellationToken)
         {
             var userId = User.CurrentUser().Id;
             Domain.AggregatesModel.Blog? blogInstance = (await _blogRepository.SelectBlogsAsync(request.BlogId, userId, cancellationToken)).FirstOrDefault();
             BlogValidation(blogInstance);
 
-            request.Name = string.IsNullOrWhiteSpace(request.Name) ? blogInstance.Name : request.Name;
-            blogInstance?.Edit(request.Name, request.Description);
-
-            if (request.PostId > 0 && !string.IsNullOrWhiteSpace(request.Content))
-            {
-                var post = blogInstance.Posts.First(p => p.Id == request.PostId);
-                Post.Edit(post, request.Content);
-            }
+            var postInstance = Post.Add(request.Content, blogInstance.Id);
+            blogInstance.AddPost(postInstance);
 
             await _blogRepository.UpdateAsync(blogInstance, cancellationToken);
 
             var blogDto = _mapper.Map<BlogPostDto>(blogInstance);
+
             return blogDto;
         }
 
