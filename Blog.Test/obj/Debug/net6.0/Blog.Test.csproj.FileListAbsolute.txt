@@ -147,3 +147,4 @@ D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\Fluent
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\MediatR.dll
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\MediatR.Contracts.dll
 D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+D:\Majid\Work\Projects\Job Interviews\Matrix42\Blog.Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
