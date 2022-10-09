@@ -12,23 +12,22 @@ namespace Blog.Domain.AggregatesModel
 
         private Post(int id, string content, int blogId, DateTime createDate)
         {
-            if (id > 0)
-                Id = id;
-
             if (string.IsNullOrWhiteSpace(content))
                 throw new ArgumentException("The Content field must not be empty");
 
-            if (blogId < 1)
-                throw new ArgumentException("The BlogId parameter must be greater than zero");
-
+            Id = id;
             Content = content;
             BlogId = blogId;
             CreateDate = createDate;
         }
 
-        public static Post Publish(int id, string content, int blogId)
+        public static Post Create(int id, string content, int blogId)
         {
             return new Post(id, content, blogId, DateTime.Now);
+        }
+        public static Post Create(string content, int blogId)
+        {
+            return Create(0, content, blogId);
         }
     }
 }

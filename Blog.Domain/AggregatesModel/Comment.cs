@@ -13,9 +13,6 @@ namespace Blog.Domain.AggregatesModel
 
         private Comment(int id, int postId, int creatorId, string content, DateTime createDate)
         {
-            if (id > 0)
-                Id = id;
-
             Content = !string.IsNullOrWhiteSpace(content) ? content :
                 throw new ArgumentException("Content is not valid");
 
@@ -25,6 +22,7 @@ namespace Blog.Domain.AggregatesModel
             CreatorId = creatorId > 0 ? creatorId :
                 throw new ArgumentException("The CreatorId parameter must be greater than zero");
 
+            Id = id;
             CreateDate = createDate;
         }
 

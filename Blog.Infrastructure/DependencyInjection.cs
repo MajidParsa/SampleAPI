@@ -1,4 +1,6 @@
-﻿using Blog.Infrastructure.Repositories.Blog;
+﻿using Blog.Domain.SeedWork;
+using Blog.Infrastructure.Repositories;
+using Blog.Infrastructure.Repositories.Blog;
 using Blog.Infrastructure.Repositories.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +12,8 @@ namespace Blog.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient(typeof(IBlogRepository), typeof(BlogRepository));
 
             //EF :

@@ -1,45 +1,43 @@
 ﻿
+using Blog.Domain.AggregatesModel;
+using Blog.Infrastructure.Repositories.EF;
+using Microsoft.EntityFrameworkCore;
+
 namespace Blog.Infrastructure.Repositories.Blog
 {
-    public class BlogRepository : IBlogRepository
+    public class BlogRepository : BaseRepository<Domain.AggregatesModel.Blog>, IBlogRepository
     {
-        private static List<Domain.AggregatesModel.Blog> _blogs;
+        private DbSet<Post> PostEntities { get; }
 
-        static BlogRepository()
+        public BlogRepository(BlogDBContext dbContext) : base(dbContext)
         {
-            /****************************************************************************************************************
-             * As a demo project:                                                                                           *
-             * Instead of using EF and connecting with the database, I used a static constructor to initialize the records. *
-             ****************************************************************************************************************/
-            _blogs = new List<Domain.AggregatesModel.Blog>
-            {
-                Domain.AggregatesModel.Blog.Create(1, "Blog 1", "Description 1", 1),
-                Domain.AggregatesModel.Blog.Create(2, "Blog 2", "Description 2", 1)
-            };
+            PostEntities = DbContext.Set<Post>();
         }
 
-        public async Task<Domain.AggregatesModel.Blog?> SelectBlog(int id, CancellationToken cancellationToken)
+        public async Task<Domain.AggregatesModel.Blog?> SelectBlogAsync(int id, CancellationToken cancellationToken)
         {
-            var blog = _blogs.FirstOrDefault(i => i.Id == id);
-            return await Task.Run(() => blog, cancellationToken);
+            //var blog = _blogs.FirstOrDefault(i => i.Id == id);
+            //return await Task.Run(() => blog, cancellationToken);
+            return null;
         }
 
-        public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogs(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsAsync(CancellationToken cancellationToken)
         {
-            return await Task.Run(() => _blogs, cancellationToken);
+            return null;//await Task.Run(() => _blogs, cancellationToken);
         }
 
-        public async Task<Domain.AggregatesModel.Blog> InsertBlog(Domain.AggregatesModel.Blog blog, CancellationToken cancellationToken)
-        {
-            _blogs.Add(blog);
-            return await Task.Run(() => blog, cancellationToken);
-        }
+        //public async Task<Domain.AggregatesModel.Blog> InsertBlogAsync(Domain.AggregatesModel.Blog blog, CancellationToken cancellationToken)
+        //{
+        //    _blogs.Add(blog);
+        //    return await Task.Run(() => blog, cancellationToken);
+        //}
 
-        public async Task<Domain.AggregatesModel.Blog> UpdateBlog(Domain.AggregatesModel.Blog blog, CancellationToken cancellationToken)
+        public async Task<Domain.AggregatesModel.Blog> UpdateBlogAsync(Domain.AggregatesModel.Blog blog, CancellationToken cancellationToken)
         {
-            _ = _blogs.Remove(_blogs.First(i => i.Id == blog.Id));
-            _blogs.Add(blog);
-            return await Task.Run(() => blog, cancellationToken);
+            return null;
+            //_ = _blogs.Remove(_blogs.First(i => i.Id == blog.Id));
+            //_blogs.Add(blog);
+            //return await Task.Run(() => blog, cancellationToken);
         }
     }
 }

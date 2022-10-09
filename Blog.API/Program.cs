@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services
     .InitializeAutoMapper()
     .AddCustomSwagger()
-    .AddServices()
+    .AddMediatR()
     .AddInfrastructure(builder.Configuration);
 
 

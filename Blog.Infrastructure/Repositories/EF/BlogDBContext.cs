@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infrastructure.Repositories.EF
 {
-    public class BlogDBContext : DbContext
+    public class BlogDBContext : DbContext, IUnitOfWork
     {
         public BlogDBContext(DbContextOptions<BlogDBContext> options)
             : base(options)
@@ -32,16 +32,16 @@ namespace Blog.Infrastructure.Repositories.EF
                 User.Create(1, "Majid", passwordHash));
 
             modelBuilder.Entity<Domain.AggregatesModel.Blog>().HasData(
-                Domain.AggregatesModel.Blog.Create(1, "Blog 1", "Description 1", 1),
-                Domain.AggregatesModel.Blog.Create(2, "Blog 2", "Description 2", 1),
-                Domain.AggregatesModel.Blog.Create(3, "Blog 3", "Description 3", 1),
-                Domain.AggregatesModel.Blog.Create(4, "Blog 4", "Description 4", 1));
+                Domain.AggregatesModel.Blog.Create(1,"Blog 1", "Description 1", 1),
+                Domain.AggregatesModel.Blog.Create(2,"Blog 2", "Description 2", 1),
+                Domain.AggregatesModel.Blog.Create(3,"Blog 3", "Description 3", 1),
+                Domain.AggregatesModel.Blog.Create(4,"Blog 4", "Description 4", 1));
 
             modelBuilder.Entity<Post>().HasData(
-                Post.Publish(1, "Post 1", 1),
-                Post.Publish(2, "Post 2", 1),
-                Post.Publish(3, "Post 3", 2),
-                Post.Publish(4, "Post 4", 1));
+                Post.Create(1,"Post 1", 1),
+                Post.Create(2,"Post 2", 1),
+                Post.Create(3,"Post 3", 2),
+                Post.Create(4,"Post 4", 1));
 
             modelBuilder.Entity<Comment>().HasData(
                 Comment.Put(1, 1, 1, "Comment 1"),

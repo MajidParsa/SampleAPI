@@ -1,32 +1,38 @@
-﻿using Blog.Application.DTOs;
-using Blog.Application.Services;
+﻿using Blog.Application.Commands.BlogCommands;
+using Blog.Application.DTOs;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Blog.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class BlogController : ControllerBase
+    public class BlogController : BaseApiController
     {
-        private readonly IBlogService _blogService;
+      
+        private readonly ILogger<BlogController> _logger;
 
-        public BlogController(IBlogService blogService)
+        public BlogController(ILogger<BlogController> logger)
         {
-            _blogService= blogService;
+           
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpGet(nameof(GetBlogsAsync))]
         public async Task<ActionResult<BlogDto>> GetBlogsAsync(CancellationToken cancellationToken)
         {
-            var result = await _blogService.GetBlogs(cancellationToken);
+            //var result = await _blogService.GetBlogs(cancellationToken);
 
-            return Ok(result);
+            return Ok(null);
         }
 
         [HttpPost(nameof(AddBlogAsync))]
-        public async Task<ActionResult<BlogDto>> AddBlogAsync(BlogInsertCommand blogInsertCommand, CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogDto>> AddBlogAsync(AddBlogCommand command, CancellationToken cancellationToken)
         {
-            var result = await _blogService.AddBlog(blogInsertCommand, cancellationToken);
+            _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
+            
+            var result = await Mediator.Send(command, cancellationToken);
+
+            _logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
 
             return Ok(result);
         }
@@ -34,11 +40,16 @@ namespace Blog.API.Controllers
         [HttpPut(nameof(EditBlogAsync))]
         public async Task<ActionResult<BlogDto>> EditBlogAsync(BlogUpdateCommand blogUpdateCommand, CancellationToken cancellationToken)
         {
-            var result = await _blogService.EditBlog(blogUpdateCommand, cancellationToken);
-            if (result == null)
-                return BadRequest("Update failed. Record not found!");
+            //_logger.LogInformation($"Request => {JsonConvert.SerializeObject(blogUpdateCommand)}");
 
-            return Ok(result);
+            //var result = await _blogService.EditBlog(blogUpdateCommand, cancellationToken);
+            
+            //_logger.LogInformation($"Response => {JsonConvert.SerializeObject(result)}");
+
+            //if (result == null)
+            //    return BadRequest("Update failed. Record not found!");
+
+            return Ok(null);
         }
 
     }
