@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Blog.Application.Commands.BlogCommands
 {
-    public class AddBlogCommand : IRequest<BlogDto>
+    public class AddBlogCommand : IRequest<BlogPostDto>
     {
         public string Name { get; set; }
         public string Description { get; set; }

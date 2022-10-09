@@ -28,6 +28,15 @@ namespace Blog.Infrastructure.Repositories.Blog
                 await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
         }
 
+        public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsLast10Days(int userId, CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking
+                .Where(i => i.CreatorId == userId && i.CreateDate >= DateTime.Now.AddDays(-10))
+                .ToListAsync(cancellationToken);
+
+            return result;
+        }
+
         public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsAsync(int? blogId, int userId, CancellationToken cancellationToken)
         {
             var result = await TableNoTracking

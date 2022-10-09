@@ -19,7 +19,7 @@ namespace Blog.API.Controllers
         }
 
         [HttpGet(nameof(GetBlogsAsync))]
-        public async Task<ActionResult<BlogsDto>> GetBlogsAsync(int? id,CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogPostsDto>> GetBlogsAsync(int? id,CancellationToken cancellationToken)
         {
             var query = new GetBlogQuery {Id = id};
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
@@ -29,8 +29,20 @@ namespace Blog.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet(nameof(GetBlogsLast10DaysAsync))]
+        public async Task<ActionResult<BlogPostsDto>> GetBlogsLast10DaysAsync(CancellationToken cancellationToken)
+        {
+            var query = new GetBlogsLast10DaysQuery();
+            _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
+
+            var result = await Mediator.Send(query, cancellationToken);
+
+            return Ok(result);
+        }
+
+
         [HttpPost(nameof(AddBlogAsync))]
-        public async Task<ActionResult<BlogDto>> AddBlogAsync(AddBlogCommand command, CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogPostDto>> AddBlogAsync(AddBlogCommand command, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
             
@@ -40,7 +52,7 @@ namespace Blog.API.Controllers
         }
 
         [HttpPut(nameof(EditBlogAsync))]
-        public async Task<ActionResult<BlogDto>> EditBlogAsync(EditBlogCommand command, CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogPostDto>> EditBlogAsync(EditBlogCommand command, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
 

@@ -8,5 +8,6 @@ namespace Blog.Infrastructure.Repositories.Blog
         Task PutCommentAsync(Domain.AggregatesModel.Blog blog, Post post, CancellationToken cancellationToken, bool saveNow = true);
         Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsAsync(int? blogId, int userId, CancellationToken cancellationToken);
         Task UpdateBlogAsync(Domain.AggregatesModel.Blog blog, Post post, CancellationToken cancellationToken, bool saveNow = true);
+        Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsLast10Days(int userId, CancellationToken cancellationToken);
     }
 }

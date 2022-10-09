@@ -30,6 +30,9 @@ namespace Blog.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CreatorId")
                         .HasColumnType("int");
 
@@ -43,6 +46,9 @@ namespace Blog.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorId");
@@ -53,6 +59,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(808),
                             CreatorId = 1,
                             Description = "Description 1",
                             Name = "Blog 1"
@@ -60,6 +67,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(876),
                             CreatorId = 1,
                             Description = "Description 2",
                             Name = "Blog 2"
@@ -67,6 +75,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(880),
                             CreatorId = 1,
                             Description = "Description 3",
                             Name = "Blog 3"
@@ -74,6 +83,7 @@ namespace Blog.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(885),
                             CreatorId = 1,
                             Description = "Description 4",
                             Name = "Blog 4"
@@ -115,7 +125,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Comment 1",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4568),
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(948),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -123,7 +133,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 2,
                             Content = "Comment 2",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4572),
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(954),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -131,7 +141,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 3,
                             Content = "Comment 3",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4574),
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(956),
                             CreatorId = 1,
                             PostId = 1
                         },
@@ -139,7 +149,7 @@ namespace Blog.Infrastructure.Migrations
                         {
                             Id = 4,
                             Content = "Comment 4",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4575),
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(959),
                             CreatorId = 1,
                             PostId = 2
                         });
@@ -164,6 +174,9 @@ namespace Blog.Infrastructure.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BlogId");
@@ -176,28 +189,28 @@ namespace Blog.Infrastructure.Migrations
                             Id = 1,
                             BlogId = 1,
                             Content = "Post 1",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4470)
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(916)
                         },
                         new
                         {
                             Id = 2,
                             BlogId = 1,
                             Content = "Post 2",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4511)
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(921)
                         },
                         new
                         {
                             Id = 3,
                             BlogId = 2,
                             Content = "Post 3",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4513)
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(923)
                         },
                         new
                         {
                             Id = 4,
                             BlogId = 1,
                             Content = "Post 4",
-                            CreateDate = new DateTime(2022, 10, 9, 17, 2, 38, 288, DateTimeKind.Local).AddTicks(4515)
+                            CreateDate = new DateTime(2022, 10, 9, 20, 32, 39, 646, DateTimeKind.Local).AddTicks(926)
                         });
                 });
 

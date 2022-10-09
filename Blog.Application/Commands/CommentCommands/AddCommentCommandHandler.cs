@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Application.Commands.CommentCommands
 {
-    public class AddCommentCommandHandler : IRequestHandler<AddCommentCommand, BlogsDto>
+    public class AddCommentCommandHandler : IRequestHandler<AddCommentCommand, BlogPostsDto>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
@@ -19,7 +19,7 @@ namespace Blog.Application.Commands.CommentCommands
         }
 
 
-        public async Task<BlogsDto> Handle(AddCommentCommand request, CancellationToken cancellationToken)
+        public async Task<BlogPostsDto> Handle(AddCommentCommand request, CancellationToken cancellationToken)
         {
             User user = User.CurrentUser();
 
@@ -37,7 +37,7 @@ namespace Blog.Application.Commands.CommentCommands
 
             await _blogRepository.PutCommentAsync(blog, post, cancellationToken);
 
-            var commentDto = _mapper.Map<BlogsDto>(blog);
+            var commentDto = _mapper.Map<BlogPostsDto>(blog);
 
             return commentDto;
         }

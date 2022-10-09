@@ -6,6 +6,7 @@ namespace Blog.Domain.AggregatesModel
     {
         public string Content { get; private set; }
         public DateTime CreateDate { get; private set; }
+        public DateTime? UpdateDate { get; private set; }
         public int BlogId { get; private set; }
         public Blog Blog { get; private set; }
         public ICollection<Comment> Comments { get; private set; }
@@ -33,6 +34,7 @@ namespace Blog.Domain.AggregatesModel
         public static void Edit(Post postInstance, string content)
         {
             postInstance.Content = content;
+            postInstance.UpdateDate = DateTime.Now;
         }
 
         public static void PutComment(Post postInstance, Comment comment)

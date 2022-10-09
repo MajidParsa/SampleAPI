@@ -3,11 +3,10 @@ using Blog.Application.DTOs;
 using Blog.Domain.AggregatesModel;
 using Blog.Infrastructure.Repositories.Blog;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Application.Commands.BlogCommands
 {
-    public class AddBlogCommandHandler : IRequestHandler<AddBlogCommand, BlogDto>
+    public class AddBlogCommandHandler : IRequestHandler<AddBlogCommand, BlogPostDto>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
@@ -18,7 +17,7 @@ namespace Blog.Application.Commands.BlogCommands
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<BlogDto> Handle(AddBlogCommand request, CancellationToken cancellationToken)
+        public async Task<BlogPostDto> Handle(AddBlogCommand request, CancellationToken cancellationToken)
         {
             var userId = User.CurrentUser().Id;
             var blogInstance = Domain.AggregatesModel.Blog.Create(request.Name, request.Description, userId);
@@ -28,7 +27,7 @@ namespace Blog.Application.Commands.BlogCommands
 
             await _blogRepository.AddAsync(blogInstance, cancellationToken);
 
-            var blogDto = _mapper.Map<BlogDto>(blogInstance);
+            var blogDto = _mapper.Map<BlogPostDto>(blogInstance);
 
             return blogDto;
         }

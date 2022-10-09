@@ -7,9 +7,10 @@ namespace Blog.Application
     {
         public MappingProfile()
         {
-            CreateMap<BlogDto, Domain.AggregatesModel.Blog>().ReverseMap();
-            CreateMap<Domain.AggregatesModel.Blog, List<BlogDto>>().ReverseMap();
+            CreateMap<BlogPostDto, Domain.AggregatesModel.Blog>().ReverseMap();
+            CreateMap<Domain.AggregatesModel.Blog, List<BlogPostDto>>();
             CreateMap<Domain.AggregatesModel.Blog, Domain.AggregatesModel.Blog>().ReverseMap();
+            CreateMap<Domain.AggregatesModel.Blog, BlogPostsDto>();
             CreateMap<Domain.AggregatesModel.Blog, BlogsDto>();
         }
     }

@@ -6,23 +6,23 @@ using MediatR;
 
 namespace Blog.Application.Queries.BlogQueries
 {
-    public class GetBlogQueryHandler : IRequestHandler<GetBlogQuery, IEnumerable<BlogPostsDto>>
+    public class GetBlogsLast10DaysHandler : IRequestHandler<GetBlogsLast10DaysQuery, IEnumerable<BlogsDto>>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
 
-        public GetBlogQueryHandler(IMapper mapper, IBlogRepository blogRepository)
+        public GetBlogsLast10DaysHandler(IMapper mapper, IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository ?? throw new ArgumentNullException(nameof(blogRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-        public async Task<IEnumerable<BlogPostsDto>> Handle(GetBlogQuery request, CancellationToken cancellationToken)
+
+        public async Task<IEnumerable<BlogsDto>> Handle(GetBlogsLast10DaysQuery request, CancellationToken cancellationToken)
         {
             var userId = User.CurrentUser().Id;
 
-            if (request.Id < 1) request.Id = null;
-            var result = await _blogRepository.SelectBlogsAsync(request.Id, userId, cancellationToken);
-            var blogsDto = _mapper.Map<List<BlogPostsDto>>(result);
+            var result = await _blogRepository.SelectBlogsLast10Days(userId, cancellationToken);
+            var blogsDto = _mapper.Map<List<BlogsDto>>(result);
 
             return blogsDto;
         }

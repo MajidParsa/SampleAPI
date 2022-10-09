@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Blog.Application.Commands.BlogCommands
 {
-    public class EditBlogCommandHandler : IRequestHandler<EditBlogCommand, BlogDto>
+    public class EditBlogCommandHandler : IRequestHandler<EditBlogCommand, BlogPostDto>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
@@ -17,7 +17,7 @@ namespace Blog.Application.Commands.BlogCommands
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<BlogDto> Handle(EditBlogCommand request, CancellationToken cancellationToken)
+        public async Task<BlogPostDto> Handle(EditBlogCommand request, CancellationToken cancellationToken)
         {
             var userId = User.CurrentUser().Id;
             Domain.AggregatesModel.Blog? blogInstance = (await _blogRepository.SelectBlogsAsync(request.BlogId, userId, cancellationToken)).FirstOrDefault();
@@ -34,7 +34,7 @@ namespace Blog.Application.Commands.BlogCommands
 
             await _blogRepository.UpdateAsync(blogInstance, cancellationToken);
 
-            var blogDto = _mapper.Map<BlogDto>(blogInstance);
+            var blogDto = _mapper.Map<BlogPostDto>(blogInstance);
             return blogDto;
         }
 
