@@ -10,7 +10,9 @@ namespace Blog.Domain.AggregatesModel
         public DateTime? UpdateDate { get; private set; }
         public int CreatorId { get; private set; }
         public User Creator { get; private set; }
-        public ICollection<Post> Posts { get; private set; }
+
+        private readonly List<Post> _posts;
+        public IReadOnlyCollection<Post> Posts => _posts;
 
         private Blog(int id, string name, string description, int creatorId, DateTime createDate)
         {
@@ -22,16 +24,21 @@ namespace Blog.Domain.AggregatesModel
             Description = description;
             CreatorId = creatorId;
             CreateDate = createDate;
-            Posts = new List<Post>();
+            _posts = new List<Post>();
         }
 
-        public static Blog Create(int id, string name, string description, int creatorId)
+        public Blog()
+        {
+            _posts = new List<Post>();
+        }
+
+        public static Blog Add(int id, string name, string description, int creatorId)
         {
             return new Blog(id, name, description, creatorId, DateTime.Now);
         }
-        public static Blog Create(string name, string description, int creatorId)
+        public static Blog Add(string name, string description, int creatorId)
         {
-            return Create(0, name, description, creatorId);
+            return Add(0, name, description, creatorId);
         }
 
 
@@ -42,9 +49,9 @@ namespace Blog.Domain.AggregatesModel
             blogInstance.Description = description;
         }
 
-        public static void PublishPost(Blog blogInstance, Post post)
+        public void AddPost(Post post)
         {
-            blogInstance.Posts.Add(post);
+            _posts.Add(post);
         }
     }
 }

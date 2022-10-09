@@ -20,10 +20,10 @@ namespace Blog.Application.Commands.BlogCommands
         public async Task<BlogPostDto> Handle(AddBlogCommand request, CancellationToken cancellationToken)
         {
             var userId = User.CurrentUser().Id;
-            var blogInstance = Domain.AggregatesModel.Blog.Create(request.Name, request.Description, userId);
+            var blogInstance = Domain.AggregatesModel.Blog.Add(request.Name, request.Description, userId);
 
             var postInstance = Post.Create(request.Content, blogInstance.Id);
-            Domain.AggregatesModel.Blog.PublishPost(blogInstance, postInstance);
+            blogInstance.AddPost(postInstance);
 
             await _blogRepository.AddAsync(blogInstance, cancellationToken);
 

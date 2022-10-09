@@ -32,10 +32,10 @@ namespace Blog.Infrastructure.Repositories.EF
                 User.Create(1, "Majid", passwordHash));
 
             modelBuilder.Entity<Domain.AggregatesModel.Blog>().HasData(
-                Domain.AggregatesModel.Blog.Create(1,"Blog 1", "Description 1", 1),
-                Domain.AggregatesModel.Blog.Create(2,"Blog 2", "Description 2", 1),
-                Domain.AggregatesModel.Blog.Create(3,"Blog 3", "Description 3", 1),
-                Domain.AggregatesModel.Blog.Create(4,"Blog 4", "Description 4", 1));
+                Domain.AggregatesModel.Blog.Add(1,"Blog 1", "Description 1", 1),
+                Domain.AggregatesModel.Blog.Add(2,"Blog 2", "Description 2", 1),
+                Domain.AggregatesModel.Blog.Add(3,"Blog 3", "Description 3", 1),
+                Domain.AggregatesModel.Blog.Add(4,"Blog 4", "Description 4", 1));
 
 
             modelBuilder.Entity<Post>().HasData(
