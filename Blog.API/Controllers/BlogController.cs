@@ -19,7 +19,7 @@ namespace Blog.API.Controllers
         }
 
         [HttpGet(nameof(GetBlogsAsync))]
-        public async Task<ActionResult<BlogPostsDto>> GetBlogsAsync(int? id,CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogPostDto>> GetBlogsAsync(int? id,CancellationToken cancellationToken)
         {
             var query = new GetBlogQuery {Id = id};
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
@@ -30,9 +30,20 @@ namespace Blog.API.Controllers
         }
 
         [HttpGet(nameof(GetBlogsLast10DaysAsync))]
-        public async Task<ActionResult<BlogPostsDto>> GetBlogsLast10DaysAsync(CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogsDto>> GetBlogsLast10DaysAsync(CancellationToken cancellationToken)
         {
             var query = new GetBlogsLast10DaysQuery();
+            _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
+
+            var result = await Mediator.Send(query, cancellationToken);
+
+            return Ok(result);
+        }
+
+        [HttpGet(nameof(GetPostsLast30DaysOfBlogsAsync))]
+        public async Task<ActionResult<BlogPostDto>> GetPostsLast30DaysOfBlogsAsync(CancellationToken cancellationToken)
+        {
+            var query = new GetPostsLast30DaysOfBlogsQuery();
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(query)}");
 
             var result = await Mediator.Send(query, cancellationToken);

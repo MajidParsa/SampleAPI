@@ -9,8 +9,8 @@ namespace Blog.Application.DTOs
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public string Content { get; set; }
-        public ICollection<Post> Posts { get; private set; }
+        public int CreatorId { get; set; }
+        public ICollection<Post> Posts { get; set; }
 
     }
 }

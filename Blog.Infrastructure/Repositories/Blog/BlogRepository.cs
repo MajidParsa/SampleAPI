@@ -37,6 +37,17 @@ namespace Blog.Infrastructure.Repositories.Blog
             return result;
         }
 
+        public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectPostsLast30DaysOfBlogs(int userId, CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking
+                .Include(p => p.Posts)
+                .Where(i => i.CreatorId == userId)
+                .Where(p => p.Posts.Any(t => t.CreateDate >= DateTime.Now.AddDays(-30)))
+                .ToListAsync(cancellationToken);
+
+            return result;
+        }
+
         public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsAsync(int? blogId, int userId, CancellationToken cancellationToken)
         {
             var result = await TableNoTracking

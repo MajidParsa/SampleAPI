@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Blog.Application.Queries.BlogQueries
 {
-    public class GetBlogQuery : IRequest<IEnumerable<BlogPostsDto>>
+    public class GetBlogQuery : IRequest<IEnumerable<BlogPostDto>>
     {
         public int? Id{ get; set; }
     }

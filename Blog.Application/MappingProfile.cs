@@ -9,8 +9,6 @@ namespace Blog.Application
         {
             CreateMap<BlogPostDto, Domain.AggregatesModel.Blog>().ReverseMap();
             CreateMap<Domain.AggregatesModel.Blog, List<BlogPostDto>>();
-            CreateMap<Domain.AggregatesModel.Blog, Domain.AggregatesModel.Blog>().ReverseMap();
-            CreateMap<Domain.AggregatesModel.Blog, BlogPostsDto>();
             CreateMap<Domain.AggregatesModel.Blog, BlogsDto>();
         }
     }

@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Blog.Application.Queries.BlogQueries
 {
-    public class GetBlogQueryHandler : IRequestHandler<GetBlogQuery, IEnumerable<BlogPostsDto>>
+    public class GetBlogQueryHandler : IRequestHandler<GetBlogQuery, IEnumerable<BlogPostDto>>
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _blogRepository;
@@ -16,13 +16,13 @@ namespace Blog.Application.Queries.BlogQueries
             _blogRepository = blogRepository ?? throw new ArgumentNullException(nameof(blogRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-        public async Task<IEnumerable<BlogPostsDto>> Handle(GetBlogQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<BlogPostDto>> Handle(GetBlogQuery request, CancellationToken cancellationToken)
         {
             var userId = User.CurrentUser().Id;
 
             if (request.Id < 1) request.Id = null;
             var result = await _blogRepository.SelectBlogsAsync(request.Id, userId, cancellationToken);
-            var blogsDto = _mapper.Map<List<BlogPostsDto>>(result);
+            var blogsDto = _mapper.Map<List<BlogPostDto>>(result);
 
             return blogsDto;
         }

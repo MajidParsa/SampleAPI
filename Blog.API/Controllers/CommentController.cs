@@ -15,7 +15,7 @@ namespace Blog.API.Controllers
         }
 
         [HttpPost(nameof(AddCommentAsync))]
-        public async Task<ActionResult<BlogPostsDto>> AddCommentAsync(AddCommentCommand command, CancellationToken cancellationToken)
+        public async Task<ActionResult<BlogPostDto>> AddCommentAsync(AddCommentCommand command, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"Request => {JsonConvert.SerializeObject(command)}");
 
