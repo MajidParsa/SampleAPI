@@ -12,19 +12,18 @@ namespace Blog.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient(typeof(IBlogRepository), typeof(BlogRepository));
 
             //EF: SQLServer
-            services.AddDbContext<BlogDBContext>(options =>
-                options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly(typeof(BlogDBContext).Assembly.FullName)));
+            //services.AddDbContext<BlogDBContext>(options =>
+            //    options.UseSqlServer(
+            //        configuration.GetConnectionString("DefaultConnection"),
+            //        b => b.MigrationsAssembly(typeof(BlogDBContext).Assembly.FullName)));
 
             //EF: InMemory
-            //services.AddDbContext<BlogDBContext>(options =>
-            //    options.UseInMemoryDatabase(databaseName: "BlogDB"), ServiceLifetime.Scoped, ServiceLifetime.Scoped);
+            services.AddDbContext<BlogDBContext>(options =>
+                options.UseInMemoryDatabase(databaseName: "BlogDB"), ServiceLifetime.Scoped, ServiceLifetime.Scoped);
 
             return services;
         }
