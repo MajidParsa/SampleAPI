@@ -30,6 +30,9 @@ namespace Blog.Infrastructure.Repositories.Blog
 
         public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsLast10Days(int userId, CancellationToken cancellationToken)
         {
+            // TODO: Paging
+            // TODO: To increase performance, We can use the ProjectTo<> method of Automapper instead of the Including a command.
+
             var result = await TableNoTracking
                 .Where(i => i.CreatorId == userId && i.CreateDate >= DateTime.Now.AddDays(-10))
                 .ToListAsync(cancellationToken);
@@ -39,6 +42,9 @@ namespace Blog.Infrastructure.Repositories.Blog
 
         public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectPostsLast30DaysOfBlogs(int userId, CancellationToken cancellationToken)
         {
+            // TODO: Paging
+            // TODO: To increase performance, We can use the ProjectTo<> method of Automapper instead of the Including a command.
+
             var result = await TableNoTracking
                 .Include(p => p.Posts)
                 .Where(i => i.CreatorId == userId)
@@ -50,6 +56,9 @@ namespace Blog.Infrastructure.Repositories.Blog
 
         public async Task<IEnumerable<Domain.AggregatesModel.Blog>> SelectBlogsAsync(int? blogId, int userId, CancellationToken cancellationToken)
         {
+            // TODO: Paging
+            // TODO: To increase performance, We can use the ProjectTo<> method of Automapper instead of the Including a command.
+
             var result = await TableNoTracking
                 .Include(p=>p.Posts)
                 .ThenInclude(c=> c.Comments)
