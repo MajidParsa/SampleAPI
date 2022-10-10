@@ -28,9 +28,9 @@ namespace Blog.Application.Commands.PostCommand
 
             await _blogRepository.UpdateAsync(blogInstance, cancellationToken);
 
-            var blogDto = _mapper.Map<BlogPostDto>(blogInstance);
+            var blogPostDto = _mapper.Map<BlogPostDto>(blogInstance);
 
-            return blogDto;
+            return blogPostDto;
         }
 
         private static void BlogValidation(Domain.AggregatesModel.Blog? blogInstance)
